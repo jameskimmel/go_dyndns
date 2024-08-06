@@ -1,0 +1,12 @@
+
+{
+    "Website": "example.com",
+    "Token": "your token",
+
+    "IPv4": true,
+    "IPv6": true,
+    "IPv4Hardcoded": "no",
+    "IPv6Hardcoded": "no",
+    "WizardDone": false
+}
+
