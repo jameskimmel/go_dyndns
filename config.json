@@ -1,12 +1,10 @@
 
 {
-    "Website": "example.com",
-    "Token": "your token",
-
-    "IPv4": true,
-    "IPv6": true,
+    "Domain": "mydomain.com",
+    "Token": "tokenfromwebgui",
     "IPv4Hardcoded": "no",
     "IPv6Hardcoded": "no",
-    "WizardDone": false
+    "IPv4Check": true,
+    "IPv6Check": true
 }
 
