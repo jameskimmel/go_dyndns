@@ -2,8 +2,8 @@
 {
     "Domain": "mydomain.com",
     "Token": "tokenfromwebgui",
-    "HardcodedIPv4": "no",
-    "HardcodedIPv6": "no",
+    "HardcodedIPv4": "n",
+    "HardcodedIPv6": "n",
     "CheckForIPv4": true,
     "CheckForIPv6": true,
     "FirstRun": true,

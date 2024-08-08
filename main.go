@@ -1,12 +1,10 @@
-/*
-This program does DynDNS updates for deSEC.io
-For Update logic and how you can set the config file, please visit
-github.com/jameskimmel/go_dyndns
-*/
-
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/jameskimmel/go_dyndns/config"
+)
 
 /*
 type Config struct {
@@ -23,7 +21,7 @@ type Header map[string][]string
 */
 
 func main() {
-	fmt.Println(`test`)
+	fmt.Println(config.Hallo("hallo"))
 	/*
 
 		// read config file
