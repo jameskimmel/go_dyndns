@@ -2,9 +2,11 @@
 {
     "Domain": "mydomain.com",
     "Token": "tokenfromwebgui",
-    "IPv4Hardcoded": "no",
-    "IPv6Hardcoded": "no",
-    "IPv4Check": true,
-    "IPv6Check": true
+    "HardcodedIPv4": "no",
+    "HardcodedIPv6": "no",
+    "CheckForIPv4": true,
+    "CheckForIPv6": true,
+    "FirstRun": true,
+    "ForceUpdate": false 
 }
 
