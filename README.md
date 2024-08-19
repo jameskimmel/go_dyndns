@@ -10,8 +10,8 @@ What it does currently:
 - Always sets the IP(s) in the update URL to prevent MITM attacks
 - Always uses HTTPS (thanks to GO)
 - Last set IP(s) and last update time will be cached in the config file
-- Only ask for an update if something actually has changed
-- Only ask for an update if the last update is at least 5min old
+- Only try to update if something actually has changed
+- Only try to update if the last update was at least 5min ago (can be adjusted in the config file)
 - Instead of checking for an IP, you can also hardcode it in the config.json file. This is only useful for special edge cases. 
 
 What is missing:
