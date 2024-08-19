@@ -5,7 +5,7 @@ This program does DynDNS updates for deSEC.io
 Please use it with caution, I am not a coder, this program is probably horrible!
 
 What it does currently:
-- Wizard will create a config.json file that saves your token unencrypted
+- Wizard will create a config.json file (including your unencrypted token)
 - Uses deSEC services to determine your IP(s)
 - Always sets the IP(s) in the update URL to prevent MITM attacks
 - Always uses HTTPS (thanks to GO)
