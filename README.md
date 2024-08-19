@@ -18,5 +18,5 @@ What is missing:
 - Only uses desec.io services to determine your IP(s), no other services can be selected
 - Only works for deSEC.io
 - input validation
-- some kind of timer to start the service. You can use crontab
+- some kind of timer to start the service.
 - code review from someone that actually knows how to code :)
