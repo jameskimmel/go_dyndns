@@ -10,7 +10,7 @@ import (
 
 func main() {
 
-	// check if config exists and can be read. Otherwise offer wizard
+	// check if config exists and can be read. Otherwise offer a wizard
 	config.CheckConfig()
 
 	// read the config
@@ -19,7 +19,7 @@ func main() {
 	// start the updater
 	updater.Updater()
 
-	// write the IPs to the config file and exit
+	// write the IP(s) and the current time to the config file and exit
 	config.UpdateConfig()
 	fmt.Println("Everything done. Program will now exit.")
 	os.Exit(0)

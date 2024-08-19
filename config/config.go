@@ -11,11 +11,12 @@ import (
 var input string
 var domain string
 var token string
-var ipv4 bool
-var ipv6 bool
-var hardcodedIPv4 string
-var hardcodedIPv6 string
-var minMinutesBetween float64
+
+// var ipv4 bool
+// var ipv6 bool
+// var hardcodedIPv4 string
+// var hardcodedIPv6 string
+// var minMinutesBetween float64
 var LastUpdate time.Time
 var LastSetIPv4 string
 var LastSetIPv6 string
@@ -36,6 +37,7 @@ type ConfigStruct struct {
 }
 
 func CheckConfig() {
+	// check if a config file is found and can be read, otherwise offer a wizard
 	_, err := os.ReadFile("config.json")
 	if err != nil {
 		// No config file found. Ask if user wants to run the config wizard
@@ -69,6 +71,8 @@ func ReadConfig() {
 }
 
 func UpdateConfig() {
+
+	// Write down the last set IPs and current time to the config file.
 
 	// use current time as last update
 	ConfigSettings.LastUpdate = time.Now()
@@ -113,56 +117,25 @@ func wizard() {
 	fmt.Println("Do you want to enable IPv4? Y/n")
 	fmt.Scanln(&input)
 	if !(input == "n") || (input == "N") {
-		ipv4 = true
+		ConfigSettings.EnableIPv4 = true
 	} else {
-		ipv4 = false
+		ConfigSettings.EnableIPv4 = false
 	}
 
 	// ask if IPv6 should be enabled
 	fmt.Println("Do you want to enable IPv6? Y/n")
 	fmt.Scanln(&input)
 	if !(input == "n") || (input == "N") {
-		ipv6 = true
+		ConfigSettings.EnableIPv6 = true
 	} else {
-		ipv6 = false
+		ConfigSettings.EnableIPv6 = false
 	}
-
-	// // hardcoded IPv4
-	// fmt.Println("Instead of checking your IPv4, you can also set a hardcoded IPv4. This is normally not needed. Press enter to skip")
-	// fmt.Scanln(&input)
-	// if (input == "n") || (input == "N") || (input == "") {
-	// 	hardcodedIPv4 = ""
-	// } else {
-	// 	hardcodedIPv4 = input
-	// }
-
-	// // hardcoded IPv6
-	// fmt.Println("Instead of checking your IPv6, you can also set a hardcoded IPv6. This is normally not needed. Press enter to skip")
-	// fmt.Scanln(&input)
-	// if (input == "n") || (input == "N") || (input == "") {
-	// 	hardcodedIPv6 = ""
-	// } else {
-	// 	hardcodedIPv6 = input
-	// }
 
 	// default value for min minutes in between
-	minMinutesBetween = 5
-
-	configWriteWizard := ConfigStruct{
-		Domain:            domain,
-		Token:             token,
-		EnableIPv4:        ipv4,
-		EnableIPv6:        ipv6,
-		HardcodedIPv4:     hardcodedIPv4,
-		HardcodedIPv6:     hardcodedIPv6,
-		MinMinutesBetween: minMinutesBetween,
-		LastUpdate:        LastUpdate,
-		LastSetIPv4:       LastSetIPv4,
-		LastSetIPv6:       LastSetIPv6,
-	}
+	ConfigSettings.MinMinutesBetween = 5
 
 	// write config struct to file
-	file, err := json.MarshalIndent(configWriteWizard, "", " ")
+	file, err := json.MarshalIndent(ConfigSettings, "", " ")
 	if err != nil {
 		fmt.Println("something went wrong marshaling the config struct")
 		log.Fatal(err)
