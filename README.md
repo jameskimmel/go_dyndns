@@ -19,6 +19,7 @@ What is missing:
 - Only uses desec.io services to determine your IP(s), no other services can be selected
 - Only works for deSEC.io
 - input validation
-- some kind of timer to start the service.
+- some kind of timer or service. I recommend you to use crontab. You can run it in a one minute intervall, since it will only
+  ask for an update if your IP(s) changed. 
 - a Windows build
 - code review from someone that actually knows how to code :)
