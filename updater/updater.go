@@ -41,12 +41,16 @@ func Updater() {
 	if config.ConfigSettings.EnableIPv4 && config.ConfigSettings.LastSetIPv4 == newIPv4 {
 		fmt.Println("Your IPv4 has not changed and is still " + newIPv4)
 		skipUpdateIPv4 = true
+	} else {
+		fmt.Println("Your IPv4 has changed to: " + newIPv4)
 	}
 
 	// compare the new IP6 with the last set one. If nothing has changed, update can be skipped
 	if config.ConfigSettings.EnableIPv6 && config.ConfigSettings.LastSetIPv6 == newIPv6 {
 		fmt.Println("Your IPv6 has not changed and is still " + newIPv6)
 		skipUpdateIPv6 = true
+	} else {
+		fmt.Println("Your IPv6 has changed to: " + newIPv6)
 	}
 
 	// if an IPv protocol is not enabled, we can also skip it
@@ -79,7 +83,14 @@ func getIPv4() {
 		log.Fatal(err)
 	}
 
+	// if everything works, the request should return 200
+	if resp.StatusCode != 200 {
+		fmt.Println("The webserver retourned an error, when we tried to identify your IPv4")
+		log.Fatal(resp.Status)
+
+	}
 	defer resp.Body.Close()
+
 	resBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal(err)
@@ -97,7 +108,14 @@ func getIPv6() {
 		log.Fatal(err)
 	}
 
+	// if everything works, the request should return 200
+	if resp.StatusCode != 200 {
+		fmt.Println("The webserver retourned an error, when we tried to identify your IPv6")
+		log.Fatal(resp.Status)
+
+	}
 	defer resp.Body.Close()
+
 	resBody, err := io.ReadAll(resp.Body)
 	if err != nil {
 		log.Fatal(err)
@@ -112,7 +130,7 @@ func checkTimeDifference() {
 	now := time.Now()
 	difference := now.Sub(config.ConfigSettings.LastUpdate)
 	if difference.Minutes() < config.ConfigSettings.MinMinutesBetween {
-		fmt.Println("last update was less than", config.ConfigSettings.MinMinutesBetween, "min ago. You can lower the value in the config.json file. Program will exit.")
+		fmt.Println("Last update was less than", config.ConfigSettings.MinMinutesBetween, "min ago. You can lower the value in the config.json file. Program will exit.")
 		os.Exit(0)
 	}
 }
@@ -150,7 +168,7 @@ func requestUpdate() {
 	}
 	defer resp.Body.Close()
 
-	// to do catch error
+	// if everything works, the request should return 200
 	if resp.StatusCode != 200 {
 		fmt.Println("Something went wrong. DeSEC returned an error when asking for an update")
 		log.Fatal(resp.Status)

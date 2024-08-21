@@ -88,7 +88,7 @@ func UpdateConfig() {
 		fmt.Println("something went wrong writing the config file")
 		log.Fatal(err)
 	}
-	fmt.Println("sucessfully written changes to config file")
+	fmt.Println("Sucessfully written changes to config file")
 
 }
 
