@@ -85,7 +85,7 @@ func getIPv4() {
 
 	// if everything works, the request should return 200
 	if resp.StatusCode != 200 {
-		fmt.Println("The webserver retourned an error, when we tried to identify your IPv4")
+		fmt.Println("The webserver returned an error, when asking for your IPv4")
 		log.Fatal(resp.Status)
 
 	}
@@ -110,7 +110,7 @@ func getIPv6() {
 
 	// if everything works, the request should return 200
 	if resp.StatusCode != 200 {
-		fmt.Println("The webserver retourned an error, when we tried to identify your IPv6")
+		fmt.Println("The webserver returned an error, when asking for your IPv6")
 		log.Fatal(resp.Status)
 
 	}
