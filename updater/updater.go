@@ -172,12 +172,10 @@ func requestUpdate() {
 	if resp.StatusCode != 200 {
 		fmt.Println("Something went wrong. DeSEC returned an error when asking for an update")
 		log.Fatal(resp.Status)
-
 	}
 
 	if resp.StatusCode == 200 {
 		fmt.Println("Successfully set the new IP(s) on DeSEC!")
-
 	}
 	// after a sucessful update, change LastSet IPs
 	config.ConfigSettings.LastSetIPv4 = newIPv4

@@ -11,12 +11,6 @@ import (
 var input string
 var domain string
 var token string
-
-// var ipv4 bool
-// var ipv6 bool
-// var hardcodedIPv4 string
-// var hardcodedIPv6 string
-// var minMinutesBetween float64
 var LastUpdate time.Time
 var LastSetIPv4 string
 var LastSetIPv6 string
